@@ -131,6 +131,10 @@
    * @returns {boolean}
    */
   wdtEmojiBundle.openPicker = function (ev) {
+    // If we are already open; exit early
+    if (hasClass(this.popup, 'open')) {
+        return;
+    }
     var parent = findParent(ev.target, 'wdt-emoji-picker-parent');
 
     wdtEmojiBundle.input = parent.querySelector(wdtEmojiBundle.selector);
@@ -174,15 +178,6 @@
     // fill with emoji
     wdtEmojiBundle.fillPickerPopup();
 
-    if (hasClass(this, 'wdt-emoji-picker-open')) {
-      wdtEmojiBundle.closePicker(this);
-      removeClass(wdtEmojiBundle.popup, 'open');
-      return false;
-    }
-
-    wdtEmojiBundle.closePickers();
-
-    addClass(this, 'wdt-emoji-picker-open');
     this.innerHTML = emoji.replace_colons(':sunglasses:');
   };
 
@@ -194,7 +189,7 @@
    */
   wdtEmojiBundle.fillPickerPopup = function () {
 
-    if (hasClass(this.popup, 'ready'))
+    if (hasClass(wdtEmojiBundle.popup, 'ready'))
       return false;
 
     // @todo - [needim] - Support for recent and custom emoji list
@@ -307,7 +302,7 @@
    * Closes all the pickers
    */
   wdtEmojiBundle.closePickers = function () {
-    var openPickers = document.querySelectorAll('.wdt-emoji-picker-open');
+    var openPickers = document.querySelectorAll('.wdt-emoji-picker.open');
     if (openPickers.length) {
       for (var i = 0; i < openPickers.length; i++) {
         wdtEmojiBundle.closePicker(openPickers[i]);
@@ -320,7 +315,7 @@
    * @param element
    */
   wdtEmojiBundle.closePicker = function (element) {
-    removeClass(element, 'wdt-emoji-picker-open');
+    removeClass(element, 'open');
     element.innerHTML = emoji.replace_colons(':smile:');
   };
 
