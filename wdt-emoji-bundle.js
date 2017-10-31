@@ -51,7 +51,7 @@
   /**
    * Init the bundle with defaults
    */
-  wdtEmojiBundle.init = function() {
+  wdtEmojiBundle.initAssets = function() {
     
     var self = this;
         
@@ -75,7 +75,7 @@
   /**
    * Init the bundle with selector, YAY!
    */
-  wdtEmojiBundle.selector = function (selector) {
+  wdtEmojiBundle.initPicker = function (selector) {
 
     var self = this;
 
