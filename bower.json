@@ -7,6 +7,6 @@
 	],
 	"description": "Slack like emoji selector with apple, twitter, google, emojion, facebook, messenger and custom emoji support.",
 	"dependencies": {
-		"js-emoji": "https://github.com/WIPAPP/js-emoji.git#6ad94aecfd089c31fe2a9c9bba948875e7a7588e"
+		"js-emoji": "https://github.com/WIPAPP/js-emoji.git#3.2.3"
 	}
 }
